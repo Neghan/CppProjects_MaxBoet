@@ -57,8 +57,8 @@ void main() {
 	player.precission = float(rand() % 2);
 	player.life = rand() % 101;
 	std::cout << "Player\n\tinitial life: " << player.life <<
-		", weapon: " << std::endl;
-		std::cout << ", precision: " << player.precission << std::endl;
+		", weapon: "<< 
+		", precision: " << player.precission << std::endl;
 	std::cout << "ZOMBIES ARE COMING!" << std::endl;
 
 	for (int i = 0; i < MAX_ZOMBIES; i++) {
