@@ -57,8 +57,8 @@ void main() {
 	player.precission = float(rand() % 2);
 	player.life = rand() % 101;
 	std::cout << "Player\n\tinitial life: " << player.life <<
-		", weapon: " << player.weapon <<
-		", precision: " << player.precission << std::endl;
+		", weapon: " << std::endl;
+		std::cout << ", precision: " << player.precission << std::endl;
 	std::cout << "ZOMBIES ARE COMING!" << std::endl;
 
 	for (int i = 0; i < MAX_ZOMBIES; i++) {
@@ -81,9 +81,9 @@ void main() {
 					", speed: "<< horda[i].speed<<
 					", damage: "<< horda[i].damage << std::endl;
 				if (horda[i].isAlive()) {
-					pleyer.attack(horda[i]);
+					player.attack(horda[i]);
 					horda[i].attack(player);
-					zombiesAreAlive=true;
+					ZombiesAreAlive=true;
 				}
 			}
 	std::cout << "----------------------------------------" << std::endl;
