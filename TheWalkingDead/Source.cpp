@@ -10,7 +10,7 @@ public:
 	Weapon weapon;
 	float precission;
 	int life;
-	void attack(Zombie &);
+	void attack(Zombie &zombie);
 	bool isAlive();
 };
 
@@ -21,7 +21,7 @@ public:
 	float speed;
 	float damage;
 	int life;
-	void attack(Player &);
+	void attack(Player &jugador);
 	bool isAlive();
 };
 
@@ -40,33 +40,28 @@ void Zombie::attack(Player &jugador) {
 }
 
 bool Player::isAlive() {
-	if (life >= 0) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return life > 0;
 }
 bool Zombie::isAlive() {
-	if (life >= 0) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return life > 0;
 }
 
 void main() {
 	srand(time(nullptr));
 
 	Player player;
-	Zombie horda[10];
+	const int MAX_ZOMBIES{10};
+	Zombie horda[MAX_ZOMBIES];
 
 	player.weapon = Weapon(rand() % 6);
 	player.precission = float(rand() % 2);
 	player.life = rand() % 101;
+	std::cout << "Player\n\tinitial life: " << player.life <<
+		", weapon: " << player.weapon <<
+		", precision: " << player.precission << std::endl;
+	std::cout << "ZOMBIES ARE COMING!" << std::endl;
 
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < MAX_ZOMBIES; i++) {
 		horda[i].distanceToPlayer = rand() % 201;
 		horda[i].speed = rand() % 21;
 		horda[i].damage = rand() % 21;
@@ -77,19 +72,22 @@ void main() {
 	do {
 
 		ZombiesAreAlive = false;
-			for (int i = 0; i < 10; i++) {
-				if (horda[i].isAlive == true && player.isAlive==true) {
-					ZombiesAreAlive = true;
-					player.attack(horda[i]);
+		std::cout << "Player\n\tlife: " << player.life << std::endl;
+		
+			for (int i = 0; i < MAX_ZOMBIES; i++) {
+				std::cout << "Zombie["<<i<<
+					"]\n\tlife: "<< horda[i].life <<
+					", distance: "<< horda[i].distanceToPlayer<<
+					", speed: "<< horda[i].speed<<
+					", damage: "<< horda[i].damage << std::endl;
+				if (horda[i].isAlive()) {
+					pleyer.attack(horda[i]);
 					horda[i].attack(player);
-					break;
-				}
-				else {
-					ZombiesAreAlive = false;
+					zombiesAreAlive=true;
 				}
 			}
-
-	} while (player.isAlive == true && ZombiesAreAlive == true);
+	std::cout << "----------------------------------------" << std::endl;
+	} while (player.isAlive() && ZombiesAreAlive);
 
 	if (ZombiesAreAlive == false) {
 		std::cout << "YOU WON!" << std::endl;
