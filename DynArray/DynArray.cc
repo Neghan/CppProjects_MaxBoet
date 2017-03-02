@@ -37,6 +37,11 @@ DynArray& DynArray::operator= (const DynArray &x) {
 
 int * DynArray::begin(void) const
 {
-	return m_data+m_size;
+	return m_data;
+}
+
+int * DynArray::end(void) const
+{
+	return m_data + m_size;
 }
 
