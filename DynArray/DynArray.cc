@@ -49,8 +49,9 @@ int * DynArray::end(void) const
 void DynArray::copy(int * first, int * last, int * dest)
 {
 	while (first <= last) {
-		dest = first;
+		*dest = *first;
 		first++;
+		dest++;
 	}
 }
 
