@@ -4,7 +4,7 @@
 
 
 
-DynArray::DynArray(void) {
+DynArray::DynArray() {
 	m_capacity = DYN_ARRAY_DEFAULT_SIZE;
 	m_size = 0;
 	m_data = new int[m_capacity]; // m_data apunta a la primera posicio de m_capacity.
@@ -20,7 +20,7 @@ DynArray::DynArray(int *arr, size_t size) {
 	}
 }
 
-DynArray::~DynArray(void) {
+DynArray::~DynArray() {
 	delete[] m_data;
 	m_data = nullptr;
 }
@@ -35,6 +35,7 @@ DynArray& DynArray::operator= (const DynArray &x) {
 
 }
 
+
 int * DynArray::begin(void) const
 {
 	return m_data;
@@ -45,3 +46,20 @@ int * DynArray::end(void) const
 	return m_data + m_size;
 }
 
+void DynArray::copy(int * first, int * last, int * dest)
+{
+	while (first <= last) {
+		dest = first;
+		first++;
+	}
+}
+
+void DynArray::push(const int & val)
+{
+	if (m_size == m_capacity) {
+
+	}
+	else {
+		m_data[m_size] = val;
+	}
+}
