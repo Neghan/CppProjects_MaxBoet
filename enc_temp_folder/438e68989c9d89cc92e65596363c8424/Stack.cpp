@@ -43,7 +43,6 @@ std::stack<std::string> putHat(std::stack<std::string> a, std::stack<std::string
 	}
 	return b;
 }
-
 std::queue<int> transformToQ(std::stack<int> &a) {
 	std::queue<int> res;
 	while (!a.empty()) {
@@ -104,7 +103,7 @@ void main() {
 	StackD.push("E");
 	StackD.push("F");
 
-	//superMerge(StackA, StackB);
+	superMerge(StackA, StackB);
 	putHat(StackC, StackD);
 	change(StackA);
 	transformToQ(StackB);
