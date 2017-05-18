@@ -15,7 +15,18 @@ public:
 	MyList::MyList();
 	MyList::MyList(MyList &a);
 	MyList::~MyList();
+	
+	void shiftLeft();
+	void shiftRight();
+	void rotateLeft();
+	void rotateRight();
+	void reverse();
+	void remove(int value);
 
-	int MyList::size();
-	bool MyList::isEmpty();
+	void push_front(int value);
+	void push_back(int value);
+	void pop_front();
+	void pop_back();
+	int size();
+	bool isEmpty();
 };
